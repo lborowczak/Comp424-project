@@ -1,8 +1,10 @@
 function begin(){
 var canvas = document.getElementById("game");
 var ctx = canvas.getContext("2d");
+canvas.style.backgroundColor = "orange"
 
 //Global variable setup
+var counter = 0;
 var sync = 0;
 var velocity = -5;
 var topOffset = 20;
@@ -52,7 +54,7 @@ function setupOffsets() {
 
 function addCanvases() {
 	 ctx.textBaseline = "hanging";
-	 ctx.font = "38px monospace";
+	 ctx.font = "38px arial";
 	 ctx.textAlign = "left";
  for (var i=0; i < 27; i++) {
 	 var renderedText = document.createElement('canvas');
@@ -134,9 +136,13 @@ function doKeyDown(e) {
  }
  var key = (String.fromCharCode(e.keyCode)).toUpperCase();
  for (var i=0; i < letters.length; i++) {
+
 	 if (letters[i][0] == key) {
+
 		 var letterLoc = letters[i][1];
 		 if (letterLoc < 45 && letterLoc > -45) {
+		 	 counter +=1;
+         	 document.getElementById('counter').innerHTML = counter;
 			 clearLetter(letters[i]);
 			 drawLetter("stroke", key, topOffset);
 			 letters[i][1] = -200;
