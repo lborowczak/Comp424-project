@@ -5,7 +5,7 @@ var ctx = canvas.getContext("2d");
 //Global variable setup
 var sync = 0;
 var velocity = -5;
-var topOffset = 15;
+var topOffset = 20;
 var letterCanvasWidth=28;
 var letters = new Array();
 var alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
@@ -22,7 +22,7 @@ drawTopLetters();
 createUpcomingLetters();
 
 //Start drawing
-setInterval(createUpcomingLetters, 1000/10);
+setInterval(createUpcomingLetters, 10000/10);
 setInterval(deleteOldLetters, 1000/10);
 var lastRender = Date.now();
 var initTime = Date.now();
