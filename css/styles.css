@@ -1,0 +1,29 @@
+#game {
+    border:2px solid black;
+}
+
+#mainDiv {
+    visibility: hidden;
+    display: flex;
+    display: -webkit-flex;
+    display: -moz-flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    /*style="text-align: center"*/
+}
+
+#optionsForm {
+    width: 350px;
+    padding-right: 50px;
+}
+
+#letterCounting {
+    width: 350px;
+    padding-left: 50px;
+}
+
+progress[value] {
+  width: 1000px;
+  height: 40px;
+}

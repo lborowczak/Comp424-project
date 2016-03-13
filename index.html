@@ -13,17 +13,38 @@
 <body>
 <article id="welcome page"><center>Welcome to the game that is not named yet!</center></article>
 
+<center><button onclick="document.getElementById('mainDiv').style.visibility = 'visible'; begin(); this.style.visibility='hidden'">Click to begin</button></center>
 
-<article hidden id="mainDiv" style="text-align: center"> <!-- Main canvas to draw on. Hidden in the beginning -->
-    <canvas id="game" width="1000" height="500" class="mainGame"></canvas>
-    <br /> <br />
-    <center><progress id="progressBar" value="5" max="10"></progress></center>
-    <center><div id = "counter"></div></center>
+
+
+<article id="mainDiv"> <!-- Main div with game elements, including the drawing canvas. Hidden in the beginning -->
+
+    <form id="optionsForm">
+        <h2>Select the audio file and lyrics file below:</h2>
+
+        <input type='file' id='songFile'>
+        <input type='submit' id='song_chosen_btn' value='Load Song'>
+        <h3>Song Loaded: Song Name <br /><br /></h3>
+        <input type='file' id='lyricsFile'>
+        <input type='submit' id='upload_btn2' value='Load Song Lyrics'>
+        <br />
+        <h3>Song Lyrics Loaded: Song Lyrics</h3>
+        <h3>Difficulty level: <br />
+            <input type="radio">Easy<br />
+            <input type="radio">Medium<br />
+            <input type="radio">Hard </h3>
+    </form>
+
+    <div id="gameElements">
+        <canvas id="game" width="1000" height="500"></canvas>
+        <br /> <br />
+        <center><progress id="progressBar" value="5" max="10"></progress></center>
+        <center><div id = "counter"></div></center>
+    </div>
+
+    <div id="letterCounting"></div>
 </article>
 
-
-
-<center><button onclick="document.getElementById('mainDiv').hidden = false; begin(); this.style.visibility='hidden'">Click to begin</button></center>
 
 
 
