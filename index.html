@@ -1,7 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>HTML5 Typing Game
+    <meta charset="UTF-8">
+    <!-- Add google webfont and css stylesheet-->
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <title>
+        HTML5 Typing Game
     </title>
 
 </head>
@@ -9,15 +14,22 @@
 <article id="welcome page"><center>Welcome to the game that is not named yet!</center></article>
 
 
-
 <article hidden id="mainDiv" style="text-align: center"> <!-- Main canvas to draw on. Hidden in the beginning -->
-    <canvas id="game" width="1000" height="500" style="border:2px solid #00000;"></canvas>
+    <canvas id="game" width="1000" height="500" class="mainGame"></canvas>
+    <br /> <br />
+    <center><progress id="progressBar" value="5" max="10"></progress></center>
+    <center><div id = "counter"></div></center>
 </article>
+
+
+
 <center><button onclick="document.getElementById('mainDiv').hidden = false; begin(); this.style.visibility='hidden'">Click to begin</button></center>
 
-<center><div id = "counter"></div></center>
 
 
 <script src="game.js"></script>
+
+
+
 </body>
 </html>
