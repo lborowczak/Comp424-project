@@ -1,3 +1,3 @@
 # Comp424-project
 
-Notes for the group
+The game is a mix between guitar hero and kareoke
