@@ -11,20 +11,11 @@ console.log(music)
 music.trackSearch({q:"Lukas Graham" ,page:1,page_size:3})
 .then(function(data){
   var songName = data.message.body.track_list[0].track.track_id
-  console.log(songName)
 music.trackLyrics({track_id:songName}).then(function(data){
-  console.log(data.message.body.lyrics.lyrics_body)
+  var lyrics = data.message.body.lyrics.lyrics_body
+  var result = lyrics.split('\n')
+  console.log(result[0])
   })
 }).catch(function(err){
    console.log(err);
 })
-
-
-
-
-
-				//expect(data).to.be.an('object');
-				//expect(data.message.body.track_list[0].track.track_name).to.eql('Got Love');
-				//expect(data.message.body.track_list[0].track.album_name).to.eql('Queen of the Clouds');
-				//expect(data.message.body.track_list[0].track.artist_name).to.eql('Tove Lo');
-				//expect(data.message.body.track_list[0].track.commontrack_vanity_id).to.eql('Tove-Lo/Got-Love');
