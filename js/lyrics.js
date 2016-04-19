@@ -1,8 +1,12 @@
-$.getJSON({
+var artist = document.getElementById('searchForm').value
+console.log(document.getElementById('searchForm').value)
 
-  data: {
+
+
+
+$.getJSON({data: {
         apikey:"85d2e353820e89033afa96e3391ba32d",
-        q_artist: "Lose Yourself",
+        q_artist: "Kid Cudi",
         format:"jsonp",
         callback:"jsonp_callback"
     },
@@ -11,10 +15,9 @@ $.getJSON({
     jsonpCallback: 'jsonp_callback',
     contentType: 'application/json',
     success: function(data) {
-        console.log(data.message.body);
+        console.log(data.message.body.track_list[0].track.track_id);
     },
-
-  });
+});
 
 /*
 var music = require('musicmatch')({guid:"85d2e353820e89033afa96e3391ba32d"});
