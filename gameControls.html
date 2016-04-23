@@ -1,8 +1,25 @@
+<?php
 
 
+if (isset($_POST['submitted']))  {
+
+		include('testphp.php');
+		$un = $_POST['un'];
+		$em = $_POST['em'];
+		$sc = $_POST['sc'];
+		$sqlinsert = "INSERT IGNORE INTO MYTABLE(UserName, Email, HIGHSCORE) VALUES ('$un','$em',$sc)";
+
+		if(!mysqli_query($conn, $sqlinsert)) {
+			die('error inserting new record');
+
+		}//end of nested if
+
+		$newrecord = "1 record added to the MYDB";
+
+}// end of the main statement
 
 
-
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -10,7 +27,7 @@
 <style>
 
 canvas {
-    border:1px solid #d3d3d3;
+    border:1px  black;
     background-color: #f1f1f1;
 }
 
@@ -33,7 +50,7 @@ article, aside, footer, header, main, nav, section {
 }
 
 body {
-  width: 960px;
+  width: 1400px;
   margin-left: auto;
   margin-right: auto;
   background-color: #f0f0f0;
@@ -73,7 +90,7 @@ article {
 }
 
 main {
-  width: 640px;
+  width: 1045px;
   float: left;
   margin-bottom: 10px;
 }
@@ -100,7 +117,203 @@ footer {
 
   <head>
 
+
+
+
+
+
+   <meta charset="UTF-8">
+    <!-- Add google webfont and css stylesheet-->
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <title>
+        HTML5 Typing Game
+    </title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+
+
+
+
+
+
+    <meta charset="UTF-8">
+    <title>News</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <!--[if lt IE 9]>
+    <script>
+      document.createElement("article");
+      document.createElement("aside");
+      document.createElement("footer");
+      document.createElement("header");
+      document.createElement("main");
+      document.createElement("nav");
+      document.createElement("section");
+    </script>
+    <![endif]-->
+  </head>
+  <body  onload="drawShape();">
+    <header class="banner">
+      <h1>Welcome to the game that is not named yet!</h1>
+      <p>TEXTFORGAME</p>
+    </header>
+
+    <nav>
+      <ul>
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="archive.html">TUTORIAL</a></li>
+        <li><a href="about.html">ABOUT</a></li>
+      </ul>
+    </nav>
+
+    <main >
+      <section>
+        <h2>GAME</h2>
+        <article id="mainDiv">
+          <header>
+            
+
+            
+          </header>
+           <div id="gameElements">
+        <canvas id="game" width="1000" height="500"></canvas>
+        <br /> <br />
+        <center><progress id="progressBar" value="5" max="10"></progress></center>
+        <center><div id = "counter"></div></center>
+    </div>
+  </br>
+          
+        </article>
+
+        <article>
+          <header>
+            <button onclick="document.getElementById('mainDiv').style.visibility = 'visible'; begin(); this.style.visibility='hidden'">Click to begin</button>
+            <h3>TEXTFORGAME</h3>
+            <p>(author, date)</p>
+          </header>
+
+
+          <form id="optionsForm">
+        <h2>Select the audio file and lyrics file below:</h2>
+
+        <input type='file' id='songFile'>
+
+        <!--<input type='submit' id='song_chosen_btn' value='Load Song'>
+         <h3>Song Loaded: Song Name <br /><br /></h3>
+        <input type='file' id='lyricsFile'>
+        <input type='submit' id='upload_btn2' value='Load Lyrics'>
+        <br />
+        <h3>Song Lyrics Loaded: Song Lyrics</h3>
+      -->
+        <h3>Difficulty level: <br />
+            <input type="radio">Easy<br />
+            <input type="radio">Medium<br />
+            <input type="radio">Hard </h3>
+    </form>
+
+    
+        </article>
+      </section>
+
+    
+    </main>
+
+    <aside>
+      <h2>**HIGH::::::::::SCORES**</br>
+        </br>
+
+
+
+
+         <?php
+$servername = "**SERVERNAME****";
+$username = "****USERNAME********";
+$password = "****PASSWORD*****";
+$dbname = "******DBNAME*****";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} 
+
+$sql = "SELECT ***COLUMNNAME****, ***COLUMNNAME**** FROM MYTABLE ORDER BY HIGHSCORE DESC";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+     // output data of each row
+$x = 1;
+
+
+for ($x = 0; $x <= 2; $x++) {
+$row = $result->fetch_assoc();
+    echo "<br> ". $row["***COLUMNNAME****"]. " - Score: ". $row["***COLUMNNAME****"]. " <br>";
+} 
+     while($row = $result->fetch_assoc()) {
+         
+     }
+} else {
+     echo "0 results";
+}
+
+$conn->close();
+?> 
+
+
+
+
+        </br>
+        
+ </br>
+ </br>
+       </br>
+       </br>
+      
+        </br>
+       </br>
+       </br>
+</br>
+       </br>
+
+  
+     
+</h2>
+      <p>-------------Thanks For Playing!--------------</p>
+    </aside>
+
+
+
+    <footer>
+      <p>
+        </br> 
+      </p>
+
+        <form method="post" action="gameControls.php">
+<input type= "hidden"  name= "submitted" value="true"/>
+
+<fieldset>
+  <label>UserName: <input type="text" name="un" /></label>
+	
+	<label>Email: <input type="text" name="em" /></label>
+	<label>Score: <input type="int" name="sc" id="final_score" readonly></label>
+</fieldset> 
+
+</br>
+
+<input type="submit" value="SAVE_SCORE"/>
+</form>
+
+<?php
+
+echo $newrecord
+
+?>
+    </footer>
+
 <script>
+var xoxox = 555;
+document.getElementById("oooo").value = xoxox;
 
 function drawShape(){
 
@@ -120,6 +333,27 @@ ctx.strokeStyle = lgrad2;
 
 ctx.strokeRect(5, 5, 595, 495);
 
+
+
+
+var context = canvas.getContext('2d');
+
+context.rect(10, 10, 585, 485);
+
+ // create radial gradient
+
+var rgrd = context.createRadialGradient(300, 300, 300, 100, 100, 0);
+
+rgrd.addColorStop(0, 'black');
+
+rgrd.addColorStop(1, 'lightgreen');
+
+
+
+context.fillStyle = rgrd;
+
+context.fill();
+
 } else {
 
 alert('Your browser does not support');
@@ -130,128 +364,13 @@ alert('Your browser does not support');
 
 
 
+
+
+
 </script>
 
-
-    <meta charset="UTF-8">
-    <title>GAME</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <!--[if lt IE 9]>
-    <script>
-      document.createElement("article");
-      document.createElement("aside");
-      document.createElement("footer");
-      document.createElement("header");
-      document.createElement("main");
-      document.createElement("nav");
-      document.createElement("section");
-    </script>
-    <![endif]-->
-  </head>
-  <body  onload="drawShape();">
-    <header class="banner">
-      <h1>WORKINGONTHENAME</h1>
-      <p>TEXTFORGAME</p>
-    </header>
-
-    <nav>
-      <ul>
-        <li><a href="index.html">HOME</a></li>
-        <li><a href="archive.html">TUTORIAL</a></li>
-        <li><a href="about.html">ABOUT</a></li>
-      </ul>
-    </nav>
-
-    <main >
-      <section>
-        <h2>GAME</h2>
-        <article>
-          <header>
-            <h3>TEXTFORGAME</h3>
-            <p>(link)</p>
-          </header>
-         <canvas id="canvasGradient" width="605" height="505" ></canvas>
-          <p >TextforgameTextforgameTextforgameTextforgameTextforgame</p>
-          <p>TextforgameTextforgameTextforgameTextforgameTextforgame</p>
-        </article>
-
-        <article>
-          <header>
-            <h3>TEXTFORGAME</h3>
-            <p>(author, date)</p>
-          </header>
-          <p>Textforgame</p>
-          <p>Textforgame</p>
-          <p>Textforgame</p>
-          <p>Textforgame</p>
-          <p>Textforgame</p>
-          <p>Textforgame</p>
-        </article>
-      </section>
-
-    
-    </main>
-
-    <aside>
-      <h2>**HIGH:SCORES**</br>
-        </br>
-        </br>
-        </br>
-        </br>
-        </br>
-        </br>
-        </br>
-       </br>
-       </br>
-       </br>
-       </br>
-       </br>
-       </br>
-       </br>
-       </br>
-       </br>
-       </br> 
-        </br>
-       </br>
-       </br>
-</br>
-       </br>
-
-  
-       </br>
-       </br>
-       </br>
-       </br> 
-        </br>
-       </br>
-       </br>
-     
-</h2>
-      <p>Thanks For Playing!</p>
-    </aside>
-
-
-
-    <footer>
-      <p>
-        </br> 
-      </p>
-
-        <form method="post" action="insert-data.php">
-<input type= "hidden"  name= "submitted" value="true"/>
-
-<fieldset>
-  <legend>HIGH_SCORES</legend>
-  <label>UserName: <input type="text" name="un" /></label>
-  <label>Email: <input type="text" name="em" /></label>
-  <label>Score: <input type="int" name="sc" /></label>
-</fieldset> 
-
-</br>
-
-<input type="submit" value="SAVE_SCORE"/>
-</form>
-    </footer>
+<script src="js/game.js"></script>
+<script src="js/lyrics.js"></script>
 
   </body>
 </html>
