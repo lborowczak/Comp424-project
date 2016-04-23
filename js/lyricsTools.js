@@ -3,7 +3,9 @@
 function getFirstLettersArray(lyricsString){
 	var cleanString = prepareString(lyricsString);
 	var firstLetters = new Array();
-	cleanString.split("\n")
+
+	//Split on newlines and spaces
+	cleanString.split(/[\n ]+/)
 	.forEach(function(currItem) {
 		firstLetters.push(currItem.charAt(0))
 	})
@@ -18,13 +20,15 @@ function calculateTimes(array, songLength){
 }
 
 
-
-//Possibly not needed
 function getCharArray(stringToParse) {
 	var cleanString = prepareString(stringToParse);
 	var lettersArray = new Array();
-	cleanString.split("\n")
+
+	//Split on newlines and spaces
+	cleanString.split(/[\n ]+/)
 	.forEach(function (currItem) {
+
+		//Split between every character
 		currItem.split("")
 		.forEach(function (currChar) {
 			lettersArray.push(currChar);
