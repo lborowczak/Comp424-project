@@ -19,11 +19,12 @@ server.use('/css', express.static('css'));
 server.use('/assets', express.static('assets'));
 
 
+
 server.get('/search/*', function (req, res) {
   //Get the song title ID
   getTitleID(req.query.searchString)
 
-  //When the id is found, look up the lyrics for that song id 
+  //When the id is found, look up the lyrics for that song id
   .done(function (data) {
     getLyricsFromID(data)
 
