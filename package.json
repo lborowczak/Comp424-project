@@ -5,7 +5,8 @@
   "main": "index.html",
   "dependencies": {
     "express": "^4.13.4",
-    "musicmatch": "^0.2.5"
+    "musicmatch": "^0.2.5",
+    "path": "^0.12.7"
   },
   "devDependencies": {},
   "scripts": {
