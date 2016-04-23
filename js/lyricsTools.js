@@ -1,38 +1,40 @@
 "use strict";
 
-function getFirstLetters(wordsArray){
-	
-	wordsArray.forEach(function(currItem) {
-		returnFirstLetters.push(currItem.charAt(0))
+function getFirstLettersArray(lyricsString){
+	var cleanString = prepareString(lyricsString);
+	var firstLetters = new Array();
+	cleanString.split("\n")
+	.forEach(function(currItem) {
+		firstLetters.push(currItem.charAt(0))
 	})
-	return returnFirstLetters;
+	return firstLetters;
 }
 
 //songLength in s
 function calculateTimes(array, songLength){
 	var songLengthInMS = songLength * 1000;
 	var arraySize = array.length;
-	return arraySize/songLengthInMS; //TODO is this right? Do we want it to add a timestamp next to each letter, or do we calculate that client-side?
+	return (arraySize/songLengthInMS); //TODO is this right? Do we want it to add a timestamp next to each letter, or do we calculate that client-side?
 }
-	
+
 
 
 //Possibly not needed
-function newLinesToCharArray(stringToParse) {
-	var returnFirstLetters;
-	stringToParse.split("\n")
-		.forEach(function (currItem) {
-			returnFirstLetters.push(stringToParse.split(""));
-		}
-		
+function getCharArray(stringToParse) {
+	var cleanString = prepareString(stringToParse);
+	var lettersArray = new Array();
+	cleanString.split("\n")
+	.forEach(function (currItem) {
+		currItem.split("")
+		.forEach(function (currChar) {
+			lettersArray.push(currChar);
+		})
+	});
+	return lettersArray;
 }
 
-
-//Not needed
-function newLinesToArray(stringToParse) {
-	var returnLinesArray = stringToParse.split("\n");
-}
-
-function stringToCharArray(stringToParse) {
-	var returnLinesArray = stringToParse.split("");
+//Function to remove many unsupported characters:
+//! ? . , : ; " $ [ ] { } | " @ # $ % ^ & * ( ) - = + \ (tab)
+function prepareString (stringToPrepare) {
+	return stringToPrepare.replace(/[!?.,:;"$\[\]{}|@#$%^&*()-=+\\\t]+/gi, "");
 }
