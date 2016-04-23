@@ -5,8 +5,7 @@
   "main": "index.html",
   "dependencies": {
     "express": "^4.13.4",
-    "musicmatch": "^0.2.5",
-    "underscore": "^1.8.3"
+    "musicmatch": "^0.2.5"
   },
   "devDependencies": {},
   "scripts": {
