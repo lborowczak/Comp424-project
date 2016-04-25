@@ -26,11 +26,11 @@ server.get('/search/*', function (req, res) {
 
   //When the id is found, look up the lyrics for that song id
   .done(function (data) {
-    getLyricsFromID(data)
-
+	var songLength = data.song_length;
+    getLyricsFromID(data.title_ID)
     //Send the song lyrics as jsonp when they are found
     .done(function (data) {
-      res.jsonp(data);
+		res.jsonp({lyrics: data, song_length: songLength});
     })
   })
 });
@@ -40,10 +40,11 @@ server.listen(3000, function () {
 });
 
 function getTitleID (searchString) {
-  var songName;
+  var songName, songLength;;
   var promise = music.trackSearch({q: searchString, page:1,page_size:3}).then(function(data) {
     songName = data.message.body.track_list[0].track.track_id;
-    return songName;
+    songLength = data.message.body.track_list[0].track.track_length;
+    return {title_ID: songName, song_length: songLength};
   });
 
     return promise;
