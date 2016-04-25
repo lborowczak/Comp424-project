@@ -1,17 +1,20 @@
-var lyrics;
+
 $('#submitSN').click(function(event){
+
   event.preventDefault();
   var artist = document.getElementById('searchForm').value
   var url = 'http://localhost:3000/search/?searchString=' + artist
   $.ajax({url: url, dataType: 'jsonp',success: function(data){
     lyrics = data;
-}});
+    console.log("Lyrics have been loaded successfully")
 
+}});
 });
 
 
 function begin(){
-  alert(lyrics)
+console.log(  getFirstLettersArray(lyrics))
+
 var canvas = document.getElementById("game");
 var ctx = canvas.getContext("2d");
 canvas.style.backgroundColor = "orange"
