@@ -10,13 +10,14 @@ canvas {
 article, aside, footer, header, main, nav, section {
   display: block;
 }
+
 ul{
   background-color: #074FAF;
   color: #074FAF;
 }
 
 html, body, h1, , h3, li, a, p,
-article, aside, footer, header, main,section {
+article, aside, footer, header, main, section {
   padding: 0;
   margin: 0;
 }
@@ -94,6 +95,8 @@ footer {
   padding-left: 10px;
 
 }
-
+button {
+	margin: 5px;
+}
 
 </style>
