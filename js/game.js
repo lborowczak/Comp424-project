@@ -6,13 +6,26 @@ $('#submitSN').click(function(event){
   var url = 'http://localhost:3000/search/?searchString=' + artist
   $.ajax({url: url, dataType: 'jsonp',success: function(data){
     lyrics = data;
-    console.log("Lyrics have been loaded successfully")
+    document.getElementById('lyricbox').innerHTML = lyrics;
+    alert("Lyrics have been loaded successfully")
 
 }});
 });
 
 
 function begin(){
+    if(document.getElementById('hard').checked){
+    var charArray = getCharArray(lyrics)
+    var speed = 80000/10
+    document.getElementById('hard').checked = false;
+  }else{
+    var charArray = getFirstLettersArray(lyrics)
+    var speed = 10000/10
+    document.getElementById('easy').checked = false;
+
+
+  }
+
 var letterCount = 0;
 var canvas = document.getElementById("game");
 var ctx = canvas.getContext("2d");
@@ -31,11 +44,6 @@ var offsets = new Array();
 setupOffsets();
 var progressBar = document.getElementById("progressBar");
 
-//Setting up for the lyrics
-var charArray = getFirstLettersArray(lyrics)
-var length = charArray.length
-//Used for testing purposes
-console.log(getFirstLettersArray(lyrics))
 
 //add a canvas for each character
 var strokeFonts = new Array();
@@ -47,7 +55,7 @@ drawTopLetters();
 createUpcomingLetters();
 
 //Start drawing
-setInterval(createUpcomingLetters, 10000/10);
+setInterval(createUpcomingLetters, speed);
 setInterval(deleteOldLetters, 1000/10);
 var lastRender = Date.now();
 var initTime = Date.now();

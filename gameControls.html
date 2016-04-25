@@ -24,7 +24,7 @@ if (isset($_POST['submitted']))  {
 <!DOCTYPE html>
 <html lang="en">
   <head>
-<meta charset="UTF-8">
+   <meta charset="UTF-8">
     <!-- Add google webfont and css stylesheet-->
     <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="css/styles.css">
@@ -33,7 +33,6 @@ if (isset($_POST['submitted']))  {
     </title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <meta charset="UTF-8">
-    <title>News</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <!--[if lt IE 9]>
     <script>
@@ -47,7 +46,7 @@ if (isset($_POST['submitted']))  {
     </script>
     <![endif]-->
   </head>
-  <body  onload="drawShape();">
+  <body>
     <header class="banner">
       <h1>Welcome to the game that is not named yet!</h1>
       <p>TEXTFORGAME</p>
@@ -66,11 +65,14 @@ if (isset($_POST['submitted']))  {
         <h2>GAME</h2>
         <article id="mainDiv">
           <header>
-					</header>
+
+
+
+          </header>
            <div id="gameElements">
         <canvas id="game" width="1000" height="500"></canvas>
         <br /> <br />
-        <center><progress id="progressBar" value="5" max="10"></progress></center>
+        <center><progress style="visibility:hidden" id="progressBar" value="5" max="10"></progress></center>
         <center><div id = "counter"></div></center>
     </div>
   </br>
@@ -79,38 +81,23 @@ if (isset($_POST['submitted']))  {
 
         <article>
           <header>
-
+						<center>
+            <button  id = 'startbtn' onclick="document.getElementById('mainDiv').style.visibility = 'visible'; begin(); document.getElementById('progressBar').style.visibility = 'visible' ">Click to begin</button>
+						<button onclick= "location.reload();"> Click to reset </button>
             <form><input type = "text" id = 'searchForm'><button id = 'submitSN'>Click to search</button></form>
+						 <td><input id = 'easy' type="radio">Easy</td>
+						 <td><input id = 'hard' type="radio">Hard</td>
+					 </center>
           </header>
 
-
-          <form id="optionsForm">
-						  <button onclick="document.getElementById('mainDiv').style.visibility = 'visible'; begin();">Click to Start</button>
-						<h3>Difficulty level: <br />
-								<input type="radio">Easy<br />
-								<input type="radio">Medium<br />
-								<input type="radio">Hard </h3>
-
-						<!--  Audio selection not implemented yet
-
-        <h2>Select the audio file and lyrics file below:</h2>
-
-        <input type='file' id='songFile'>
-			-->
-
-        <!--<input type='submit' id='song_chosen_btn' value='Load Song'>
-         <h3>Song Loaded: Song Name <br /><br /></h3>
-        <input type='file' id='lyricsFile'>
-        <input type='submit' id='upload_btn2' value='Load Lyrics'>
-        <br />
-        <h3>Song Lyrics Loaded: Song Lyrics</h3>
-      -->
-
-    </form>
 
 
         </article>
       </section>
+			<article>
+				<h3>Lyric Box </h3>
+				<p id = "lyricbox"> </p>
+			</article>
 
 
     </main>
@@ -190,7 +177,8 @@ $conn->close();
 <input type= "hidden"  name= "submitted" value="true"/>
 
 <fieldset>
-  <label>Username: <input type="text" name="un" /></label>
+  <label>UserName: <input type="text" name="un" /></label>
+
 	<label>Email: <input type="text" name="em" /></label>
 	<label>Score: <input type="int" name="sc" id="final_score" readonly></label>
 </fieldset>
@@ -209,6 +197,7 @@ echo $newrecord
 
 <script src="js/lyricsTools.js"></script>
 <script src="js/game.js"></script>
+
 <script src="js/lyrics.js"></script>
 
   </body>

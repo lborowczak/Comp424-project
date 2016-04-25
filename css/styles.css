@@ -83,5 +83,12 @@ footer {
   color: white;
   padding: 5px 20px;
 }
+#startbtn,#submitSN,#searchForm,#easy,#hard{
+  border = 1px;
+  align-items: center;
+  padding-left: 10px;
+
+}
+
 
 </style>
