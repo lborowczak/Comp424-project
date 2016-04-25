@@ -1,7 +1,8 @@
 "use strict";
 
 function getFirstLettersArray(lyricsString){
-	var cleanString = prepareString(lyricsString);
+
+	var cleanString = prepareString(lyrics);
 	var firstLetters = new Array();
 
 	//Split on newlines and spaces
@@ -21,6 +22,7 @@ function calculateTimes(array, songLength){
 
 
 function getCharArray(stringToParse) {
+
 	var cleanString = prepareString(stringToParse);
 	var lettersArray = new Array();
 
@@ -40,5 +42,6 @@ function getCharArray(stringToParse) {
 //Function to remove many unsupported characters:
 //! ? . , : ; " $ [ ] { } | " @ # $ % ^ & * ( ) - = + \ (tab)
 function prepareString (stringToPrepare) {
-	return stringToPrepare.replace(/[!?.,:;"$\[\]{}|@#$%^&*()-=+\\\t]+/gi, "");
+	var upper = stringToPrepare.toUpperCase();
+	return upper.replace(/[!?.,:;"$\[\]{}|@#$%^&*()-=+\\\t]+/gi, "");
 }

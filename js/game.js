@@ -13,8 +13,7 @@ $('#submitSN').click(function(event){
 
 
 function begin(){
-console.log(  getFirstLettersArray(lyrics))
-
+var letterCount = 0;
 var canvas = document.getElementById("game");
 var ctx = canvas.getContext("2d");
 canvas.style.backgroundColor = "orange"
@@ -31,6 +30,12 @@ var alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P",
 var offsets = new Array();
 setupOffsets();
 var progressBar = document.getElementById("progressBar");
+
+//Setting up for the lyrics
+var charArray = getFirstLettersArray(lyrics)
+var length = charArray.length
+//Used for testing purposes
+console.log(getFirstLettersArray(lyrics))
 
 //add a canvas for each character
 var strokeFonts = new Array();
@@ -137,9 +142,10 @@ function updateLetter(letter) {
 }
 
 function createUpcomingLetters() {
- deleteOldLetters();
- var randNum = Math.floor(Math.random() * 26);
- var tmpArray= [alphabet[randNum],500];
+  deleteOldLetters();
+  var tmpArray= [charArray[letterCount],500];
+  console.log(tmpArray)
+ letterCount ++;
  letters.push(tmpArray);
 }
 
