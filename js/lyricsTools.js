@@ -37,7 +37,7 @@ function getCharArray(stringToParse) {
 	//Split on newlines and spaces
 	cleanString.split(/[\n ]+/)
 	.forEach(function (currItem) {
-		
+
 		//Split between every character
 		currItem.split("")
 		.forEach(function (currChar) {

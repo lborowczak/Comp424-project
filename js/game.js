@@ -28,7 +28,7 @@ function begin(){
 var letterCount = 0;
 var canvas = document.getElementById("game");
 var ctx = canvas.getContext("2d");
-canvas.style.backgroundColor = "orange"
+canvas.style.backgroundColor = "#0DAE61	"
 
 //Global variable setup
 

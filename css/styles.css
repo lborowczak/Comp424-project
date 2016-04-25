@@ -10,15 +10,19 @@ canvas {
 article, aside, footer, header, main, nav, section {
   display: block;
 }
+ul{
+  background-color: #074FAF;
+  color: #074FAF;
+}
 
-html, body, h1, h2, h3, ul, li, a, p,
-article, aside, footer, header, main, nav, section {
+html, body, h1, , h3, li, a, p,
+article, aside, footer, header, main,section {
   padding: 0;
   margin: 0;
 }
 
 .banner {
-  background-color:black;
+  background-color:#0537C2;
   color: white;
   padding: 10px 20px;
 }
@@ -27,13 +31,13 @@ body {
   width: 1400px;
   margin-left: auto;
   margin-right: auto;
-  background-color: #f0f0f0;
+  background-color: #0420D6;
   font-family: Helvetica, Arial, sans-serif;
   font-size: 15px;
 }
 
 nav {
-  background-color: pink;
+  background-color:#074FAF;
   padding: 5px;
   margin-top: 1px;
 }
@@ -52,13 +56,13 @@ li {
 }
 
 section {
-  background-color: #bbbbbb;
+  background-color:#08679B;
   margin-top: 10px;
   padding: 5px;
 }
 
 article {
-  background-color: white;
+  background-color: #0A7F88	;
   margin-top: 5px;
   padding: 10px 15px;
 }
@@ -67,10 +71,11 @@ main {
   width: 1045px;
   float: left;
   margin-bottom: 10px;
+
 }
 
 aside {
-  background-color: #bbbbbb;
+  background-color: #08679B;
   width: 270px;
   float: right;
   padding: 20px;
@@ -79,7 +84,7 @@ aside {
 
 footer {
   clear: both;
-  background-color: #20416c;
+  background-color: #074FAF;
   color: white;
   padding: 5px 20px;
 }
