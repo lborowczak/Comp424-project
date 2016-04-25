@@ -24,93 +24,6 @@ if (isset($_POST['submitted']))  {
 <!DOCTYPE html>
 <html lang="en">
 
-<style>
-
-canvas {
-    border:1px  black;
-    background-color: #f1f1f1;
-}
-
-@charset "UTF-8";
-
-article, aside, footer, header, main, nav, section {
-  display: block;
-}
-
-html, body, h1, h2, h3, ul, li, a, p, 
-article, aside, footer, header, main, nav, section {
-  padding: 0;
-  margin: 0;
-}
-
-.banner {
-  background-color:black;
-  color: white;
-  padding: 10px 20px;
-}
-
-body {
-  width: 1400px;
-  margin-left: auto;
-  margin-right: auto;
-  background-color: #f0f0f0;
-  font-family: Helvetica, Arial, sans-serif;
-  font-size: 15px;
-}
-
-nav {
-  background-color: pink;
-  padding: 5px;
-  margin-top: 1px;
-}
-
-li a {
-  color: white;
-}
-
-li {
-  display: inline;
-  margin-left: 15px;
-  margin-right: 15px;
-  font-size: 20px;
-  font-variant: small-caps;
-  font-weight: bold;
-}
-
-section {
-  background-color: #bbbbbb;
-  margin-top: 10px;
-  padding: 5px;
-}
-
-article {
-  background-color: white;
-  margin-top: 5px;
-  padding: 10px 15px;
-}
-
-main {
-  width: 1045px;
-  float: left;
-  margin-bottom: 10px;
-}
-
-aside {
-  background-color: #bbbbbb;
-  width: 270px;
-  float: right;
-  padding: 20px;
-  margin-top: 10px;
-}
-
-footer {
-  clear: both;
-  background-color: #20416c;
-  color: white;
-  padding: 5px 20px;
-}
-
-</style>
 
 
 
@@ -130,13 +43,6 @@ footer {
         HTML5 Typing Game
     </title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-
-
-
-
-
-
-
     <meta charset="UTF-8">
     <title>News</title>
     <link rel="stylesheet" type="text/css" href="style.css">
@@ -171,9 +77,9 @@ footer {
         <h2>GAME</h2>
         <article id="mainDiv">
           <header>
-            
 
-            
+
+
           </header>
            <div id="gameElements">
         <canvas id="game" width="1000" height="500"></canvas>
@@ -182,7 +88,7 @@ footer {
         <center><div id = "counter"></div></center>
     </div>
   </br>
-          
+
         </article>
 
         <article>
@@ -211,11 +117,11 @@ footer {
             <input type="radio">Hard </h3>
     </form>
 
-    
+
         </article>
       </section>
 
-    
+
     </main>
 
     <aside>
@@ -236,7 +142,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
-} 
+}
 
 $sql = "SELECT ***COLUMNNAME****, ***COLUMNNAME**** FROM MYTABLE ORDER BY HIGHSCORE DESC";
 $result = $conn->query($sql);
@@ -249,35 +155,35 @@ $x = 1;
 for ($x = 0; $x <= 2; $x++) {
 $row = $result->fetch_assoc();
     echo "<br> ". $row["***COLUMNNAME****"]. " - Score: ". $row["***COLUMNNAME****"]. " <br>";
-} 
+}
      while($row = $result->fetch_assoc()) {
-         
+
      }
 } else {
      echo "0 results";
 }
 
 $conn->close();
-?> 
+?>
 
 
 
 
         </br>
-        
+
  </br>
  </br>
        </br>
        </br>
-      
+
         </br>
        </br>
        </br>
 </br>
        </br>
 
-  
-     
+
+
 </h2>
       <p>-------------Thanks For Playing!--------------</p>
     </aside>
@@ -286,7 +192,7 @@ $conn->close();
 
     <footer>
       <p>
-        </br> 
+        </br>
       </p>
 
         <form method="post" action="gameControls.php">
@@ -294,10 +200,10 @@ $conn->close();
 
 <fieldset>
   <label>UserName: <input type="text" name="un" /></label>
-	
+
 	<label>Email: <input type="text" name="em" /></label>
 	<label>Score: <input type="int" name="sc" id="final_score" readonly></label>
-</fieldset> 
+</fieldset>
 
 </br>
 
@@ -311,63 +217,6 @@ echo $newrecord
 ?>
     </footer>
 
-<script>
-var xoxox = 555;
-document.getElementById("oooo").value = xoxox;
-
-function drawShape(){
-
-var canvas = document.getElementById('canvasGradient');
-
-if (canvas.getContext){
-
-var ctx = canvas.getContext('2d');
-
-var lgrad2 = ctx.createLinearGradient(0, 50, 0, 100);
-
-lgrad2.addColorStop(0, 'blue');
-
-lgrad2.addColorStop(1, 'red');
-
-ctx.strokeStyle = lgrad2;
-
-ctx.strokeRect(5, 5, 595, 495);
-
-
-
-
-var context = canvas.getContext('2d');
-
-context.rect(10, 10, 585, 485);
-
- // create radial gradient
-
-var rgrd = context.createRadialGradient(300, 300, 300, 100, 100, 0);
-
-rgrd.addColorStop(0, 'black');
-
-rgrd.addColorStop(1, 'lightgreen');
-
-
-
-context.fillStyle = rgrd;
-
-context.fill();
-
-} else {
-
-alert('Your browser does not support');
-
-}
-
-}
-
-
-
-
-
-
-</script>
 
 <script src="js/game.js"></script>
 <script src="js/lyrics.js"></script>

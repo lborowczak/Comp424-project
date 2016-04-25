@@ -1,9 +1,22 @@
+$('#submitSN').click(function(event){
+  event.preventDefault();
+  var artist = document.getElementById('searchForm').value
+  var url = 'http://localhost:3000/search/?searchString=' + artist
+  $.get(url,{},function(data){
+    data.preventDefault();
+    alert(data)
+  });
+  alert(url)
+});
+
+
 function begin(){
 var canvas = document.getElementById("game");
 var ctx = canvas.getContext("2d");
 canvas.style.backgroundColor = "orange"
 
 //Global variable setup
+
 var correctLettersCounter = 0;
 var totalLettersCounter = -1;
 var velocity = -5;

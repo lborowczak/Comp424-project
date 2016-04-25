@@ -1,29 +1,87 @@
-#game {
-    border:2px solid black;
+<style>
+
+canvas {
+    border:1px  black;
+    background-color: #f1f1f1;
 }
 
-#mainDiv {
-    visibility: hidden;
-    display: flex;
-    display: -webkit-flex;
-    display: -moz-flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: center;
-    /*style="text-align: center"*/
+@charset "UTF-8";
+
+article, aside, footer, header, main, nav, section {
+  display: block;
 }
 
-#optionsForm {
-    width: 350px;
-    padding-right: 50px;
+html, body, h1, h2, h3, ul, li, a, p,
+article, aside, footer, header, main, nav, section {
+  padding: 0;
+  margin: 0;
 }
 
-#letterCounting {
-    width: 350px;
-    padding-left: 50px;
+.banner {
+  background-color:black;
+  color: white;
+  padding: 10px 20px;
 }
 
-progress[value] {
-  width: 1000px;
-  height: 40px;
+body {
+  width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #f0f0f0;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 15px;
 }
+
+nav {
+  background-color: pink;
+  padding: 5px;
+  margin-top: 1px;
+}
+
+li a {
+  color: white;
+}
+
+li {
+  display: inline;
+  margin-left: 15px;
+  margin-right: 15px;
+  font-size: 20px;
+  font-variant: small-caps;
+  font-weight: bold;
+}
+
+section {
+  background-color: #bbbbbb;
+  margin-top: 10px;
+  padding: 5px;
+}
+
+article {
+  background-color: white;
+  margin-top: 5px;
+  padding: 10px 15px;
+}
+
+main {
+  width: 1045px;
+  float: left;
+  margin-bottom: 10px;
+}
+
+aside {
+  background-color: #bbbbbb;
+  width: 270px;
+  float: right;
+  padding: 20px;
+  margin-top: 10px;
+}
+
+footer {
+  clear: both;
+  background-color: #20416c;
+  color: white;
+  padding: 5px 20px;
+}
+
+</style>
