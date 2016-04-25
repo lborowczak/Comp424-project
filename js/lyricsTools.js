@@ -43,5 +43,5 @@ function getCharArray(stringToParse) {
 //! ? . , : ; " $ [ ] { } | " @ # $ % ^ & * ( ) - = + \ (tab)
 function prepareString (stringToPrepare) {
 	var upper = stringToPrepare.toUpperCase();
-	return upper.replace(/[!?.,:;"$\[\]{}|@#$%^&*()-=+\\\t]+/gi, "");
+	return upper.replace(/['!?.,:;"$\[\]{}|@#$%^&*()-=+\\\t]+/gi, "");
 }

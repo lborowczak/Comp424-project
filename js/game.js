@@ -16,7 +16,7 @@ $('#submitSN').click(function(event){
 function begin(){
     if(document.getElementById('hard').checked){
     var charArray = getCharArray(lyrics)
-    var speed = 80000/10
+    var speed = 5000/10
     document.getElementById('hard').checked = false;
   }else{
     var charArray = getFirstLettersArray(lyrics)
