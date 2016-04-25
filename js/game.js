@@ -2,10 +2,11 @@ $('#submitSN').click(function(event){
   event.preventDefault();
   var artist = document.getElementById('searchForm').value
   var url = 'http://localhost:3000/search/?searchString=' + artist
-  $.get(url,{},function(data){
+  /*$.getJSON(url,{},function(data){
     data.preventDefault();
     alert(data)
   });
+  */
   alert(url)
 });
 
