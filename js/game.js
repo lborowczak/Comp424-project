@@ -131,6 +131,7 @@ function updateCounter() {
     progressBar.setAttribute("value", correctLettersCounter);
     progressBar.setAttribute("max", totalLettersCounter);
     document.getElementById('counter').innerHTML = correctLettersCounter +"/" + totalLettersCounter;
+	document.getElementById("final_score").value = correctLettersCounter;
 }
 
 function drawUpcomingLetters() {
