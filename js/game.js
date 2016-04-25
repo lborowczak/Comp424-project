@@ -5,7 +5,8 @@ $('#submitSN').click(function(event){
   var artist = document.getElementById('searchForm').value
   var url = 'http://localhost:3000/search/?searchString=' + artist
   $.ajax({url: url, dataType: 'jsonp',success: function(data){
-    lyrics = data;
+    lyrics = data.lyrics;
+    songLength = data.song_length;
     document.getElementById('lyricbox').innerHTML = lyrics;
     alert("Lyrics have been loaded successfully")
 
@@ -15,12 +16,10 @@ $('#submitSN').click(function(event){
 
 function begin(){
     if(document.getElementById('hard').checked){
-    var charArray = getCharArray(lyrics)
-    var speed = 5000/10
+    letters = calculatedTimes(getCharArray(lyrics), songLength);
     document.getElementById('hard').checked = false;
-  }else{
-    var charArray = getFirstLettersArray(lyrics)
-    var speed = 10000/10
+  } else {
+    letters = calculatedTimes(getFirstLettersArray(lyrics), songLength);
     document.getElementById('easy').checked = false;
 
 
@@ -35,10 +34,9 @@ canvas.style.backgroundColor = "orange"
 
 var correctLettersCounter = 0;
 var totalLettersCounter = -1;
-var velocity = -5;
+var velocity = -1;
 var topOffset = 20;
 var letterCanvasWidth=28;
-var letters = new Array();
 var alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
 var offsets = new Array();
 setupOffsets();
@@ -52,21 +50,25 @@ addCanvases();
 
 //Initial draw calls
 drawTopLetters();
-createUpcomingLetters();
 
 //Start drawing
-setInterval(createUpcomingLetters, speed);
 setInterval(deleteOldLetters, 1000/10);
+setInterval(updateLetterPos, 1000/10);
 var lastRender = Date.now();
 var initTime = Date.now();
 render();
+
+function updateLetterPos() {
+  for (var i=0; i < letters.length; i++)
+   letters[i][1] += velocity;
+}
+
 
 //Add key events to the canvas
 window.addEventListener( "keydown", doKeyDown, true);
 
 function render() {
  var delta = Date.now() - lastRender;
- velocity = -Math.floor((delta/16) * (Math.log(Date.now() - initTime)/Math.log(10)) );
  drawGame();
  requestAnimationFrame(render);
  lastRender = Date.now();
@@ -77,7 +79,7 @@ function drawGame() {
 }
 
 function setupOffsets() {
- for (i=0; i< 27; i++) {
+ for (var i = 0; i < 27; i++) {
 	 offsets[i] = 50 + (i*35);
  }
 }
@@ -133,7 +135,7 @@ function updateCounter() {
 
 function drawUpcomingLetters() {
  if (letters.length == 0) return;
- for (i = 0; i < letters.length; i++) {
+ for (var i = 0; i < letters.length; i++) {
 	 updateLetter(letters[i]);
  }
 }
@@ -144,18 +146,11 @@ function updateLetter(letter) {
 	 drawLetter("stroke", letter[0], topOffset);
 //   	 ctx.drawImage(strokeFonts[alphabet.indexOf(letter[0])], tmpOffset, topOffset);
  }
- letter[1] += velocity;
+
  drawLetter("fill", letter[0], letter[1]);
 //    ctx.drawImage(fillFonts[alphabet.indexOf(letter[0])], tmpOffset, letter[1]);
 }
 
-function createUpcomingLetters() {
-  deleteOldLetters();
-  var tmpArray= [charArray[letterCount],500];
-  console.log(tmpArray)
- letterCount ++;
- letters.push(tmpArray);
-}
 
 function deleteOldLetters() {
  if (letters.length == 0) return;
@@ -177,9 +172,7 @@ function doKeyDown(e) {
  }
  var key = (String.fromCharCode(e.keyCode)).toUpperCase();
  for (var i=0; i < letters.length; i++) {
-
 	 if (letters[i][0] == key) {
-
 		 var letterLoc = letters[i][1];
 		 if (letterLoc < 45 && letterLoc > -45) {
 		 	 correctLettersCounter +=1;

@@ -14,10 +14,18 @@ function getFirstLettersArray(lyricsString){
 }
 
 //songLength in s
-function calculateTimes(array, songLength){
-	var songLengthInMS = songLength * 1000;
-	var arraySize = array.length;
-	return (arraySize/songLengthInMS); //TODO is this right? Do we want it to add a timestamp next to each letter, or do we calculate that client-side?
+function calculatedTimes(charArray, songLength){
+	var songLengthInMS = songLength * 100;
+
+    //Get the number of ms per letter / 10, rounded to the nearest ms
+	var msPerLetter = Math.round(songLengthInMS/charArray.length);
+	var returnArray = new Array();
+	for (var i = 0; i < charArray.length; i++)
+	{
+		var tmpArray = [charArray[i], msPerLetter * (i + 1)];
+		returnArray.push(tmpArray)
+	}
+	return returnArray;
 }
 
 
@@ -29,7 +37,7 @@ function getCharArray(stringToParse) {
 	//Split on newlines and spaces
 	cleanString.split(/[\n ]+/)
 	.forEach(function (currItem) {
-
+		
 		//Split between every character
 		currItem.split("")
 		.forEach(function (currChar) {
