@@ -41,18 +41,6 @@ $conn = new mysqli($servername, $username, $password, $dbname);
     </title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <!--[if lt IE 9]>
-    <script>
-      document.createElement("article");
-      document.createElement("aside");
-      document.createElement("footer");
-      document.createElement("header");
-      document.createElement("main");
-      document.createElement("nav");
-      document.createElement("section");
-    </script>
-    <![endif]-->
   </head>
   <body>
     <header class="banner">
@@ -62,9 +50,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 
     <nav>
       <ul>
-        <li><a href="index.html">HOME</a></li>
         <li><a href="archive.html">TUTORIAL</a></li>
-        <li><a href="about.html">ABOUT</a></li>
       </ul>
     </nav>
 
@@ -205,8 +191,6 @@ echo $newrecord
 
 <script src="js/lyricsTools.js"></script>
 <script src="js/game.js"></script>
-
-<script src="js/lyrics.js"></script>
 
   </body>
 </html>

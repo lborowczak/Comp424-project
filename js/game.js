@@ -53,7 +53,7 @@ drawTopLetters();
 
 //Start drawing
 setInterval(deleteOldLetters, 1000/10);
-setInterval(updateLetterPos, 1000/10);
+setInterval(updateLetterPos, 1000/60);
 var lastRender = Date.now();
 var initTime = Date.now();
 render();

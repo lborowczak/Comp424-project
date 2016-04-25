@@ -22,7 +22,7 @@ function calculatedTimes(charArray, songLength){
 	var returnArray = new Array();
 	for (var i = 0; i < charArray.length; i++)
 	{
-		var tmpArray = [charArray[i], msPerLetter * (i + 1)];
+		var tmpArray = [charArray[i], msPerLetter * (i) + 200];
 		returnArray.push(tmpArray)
 	}
 	return returnArray;
