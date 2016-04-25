@@ -2,7 +2,7 @@
 var express = require('express');
 var music = require('musicmatch')({guid:"85d2e353820e89033afa96e3391ba32d"});
 var server = express();
-var path = require('path');
+var path = require('path')
 
 
 server.get('/', function(req,res) {
@@ -26,12 +26,11 @@ server.get('/search/*', function (req, res) {
 
   //When the id is found, look up the lyrics for that song id
   .done(function (data) {
-    var songLength = data.song_length;
-    getLyricsFromID(data.title_ID)
+    getLyricsFromID(data)
 
-    //Send the song lyrics as json when they are found
+    //Send the song lyrics as jsonp when they are found
     .done(function (data) {
-      res.json({lyrics: data, length: songLength});
+      res.jsonp(data);
     })
   })
 });
@@ -41,11 +40,10 @@ server.listen(3000, function () {
 });
 
 function getTitleID (searchString) {
-  var songName, songLength;
+  var songName;
   var promise = music.trackSearch({q: searchString, page:1,page_size:3}).then(function(data) {
     songName = data.message.body.track_list[0].track.track_id;
-    songLength = data.message.body.track_list[0].track.track_length;
-    return {title_ID: songName, song_length: songLength};
+    return songName;
   });
 
     return promise;

@@ -1,17 +1,17 @@
+var lyrics;
 $('#submitSN').click(function(event){
   event.preventDefault();
   var artist = document.getElementById('searchForm').value
   var url = 'http://localhost:3000/search/?searchString=' + artist
-  /*$.getJSON(url,{},function(data){
-    data.preventDefault();
-    alert(data)
-  });
-  */
-  alert(url)
+  $.ajax({url: url, dataType: 'jsonp',success: function(data){
+    lyrics = data;
+}});
+
 });
 
 
 function begin(){
+  alert(lyrics)
 var canvas = document.getElementById("game");
 var ctx = canvas.getContext("2d");
 canvas.style.backgroundColor = "orange"
